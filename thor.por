@@ -10,7 +10,8 @@ programa
 
 	inteiro background
 	inteiro thor_parado
-	inteiro thor_andando
+	inteiro thor_correndo_dir
+	inteiro thor_correndo_esq
 	inteiro thor_pulando
 	inteiro thor_abaixado
 	inteiro mob_fogo
@@ -28,7 +29,8 @@ programa
 		Graficos.definir_dimensoes_janela(LARGURA_DA_TELA, ALTURA_DA_TELA)
 		background = Graficos.carregar_imagem("background.jpg")
 		thor_parado = Graficos.carregar_imagem("parado.png")
-		thor_andando = Graficos.carregar_imagem("andando1.png")
+		thor_correndo_dir = Graficos.carregar_imagem("correndo_dir.png")
+		thor_correndo_esq = Graficos.carregar_imagem("correndo_esq.png")
 		thor_pulando = Graficos.carregar_imagem("pulando.png")
 		thor_abaixado = Graficos.carregar_imagem("abaixado.png")
 		mob_fogo = Graficos.carregar_imagem("Image254.png")
@@ -51,7 +53,7 @@ programa
 			inteiro posicao_pulo = 370
 			
 			
-			se (parado e nao abaixado e nao pulando){
+			se (parado e nao abaixado e nao pulando e nao direita e nao esquerda){
 				Graficos.desenhar_porcao_imagem(x, posicao_inicial, 0, 0, largura_char, altura_char, thor_parado)
 			}
 
@@ -65,7 +67,11 @@ programa
 			}
 			
 			se (direita){
-				Graficos.desenhar_porcao_imagem(x, posicao_inicial, xi, 0, largura_char, altura_char, thor_andando)
+				Graficos.desenhar_porcao_imagem(x, posicao_inicial, xi, 0, largura_char, altura_char, thor_correndo_dir)
+			}
+
+			se (esquerda){
+				Graficos.desenhar_porcao_imagem(x, posicao_inicial, xi, 0, largura_char, altura_char, thor_correndo_esq)
 			}
 
 			
@@ -107,7 +113,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1914; 
+ * @POSICAO-CURSOR = 2720; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
